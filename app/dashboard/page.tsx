@@ -21,14 +21,12 @@ export default function Dashboard() {
   return (
     <>
       {/* ===== Top Heading ===== */}
-      <Header>
-        <TopNav links={topNav} />
-        <div className="ms-auto flex items-center space-x-4">
+      <Header className="">
+        <TopNav links={topNav} className="flex w-full" />
+        <div className="flex w-fit items-center gap-4">
           <Search />
-          {/*
-           TODO:fix the direction on sidebar and nav bar  
-          <LanguageSwitch /> 
-          */}
+          {/* TODO:fix the direction on sidebar and nav bar  */}
+          <LanguageSwitch />
           <ThemeSwitch />
           <ProfileDropdown />
         </div>

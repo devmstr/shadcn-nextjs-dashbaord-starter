@@ -1,3 +1,4 @@
+'use client'
 import {
   Sidebar,
   SidebarContent,
@@ -6,14 +7,21 @@ import {
   SidebarRail
 } from '@/components/ui/sidebar'
 // import { AppTitle } from './app-title'
+import { useDirection } from '../providers/direction-provider'
 import { sidebarData } from './data/sidebar-data'
 import { NavGroup } from './nav-group'
 import { NavUser } from './nav-user'
 import { TeamSwitcher } from './team-switcher'
 
 export function AppSidebar() {
+  const { dir } = useDirection()
+
   return (
-    <Sidebar collapsible={'icon'} variant={'sidebar'}>
+    <Sidebar
+      side={dir == 'ltr' ? 'left' : 'right'}
+      collapsible={'icon'}
+      variant={'inset'}
+    >
       <SidebarHeader>
         <TeamSwitcher teams={sidebarData.teams} />
 

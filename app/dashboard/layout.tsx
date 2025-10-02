@@ -1,15 +1,17 @@
 import { AppSidebar } from '@/components/layout/app-sidebar'
+import { useDirection } from '@/components/providers/direction-provider'
 import { SearchProvider } from '@/components/providers/search-provider'
 import { SidebarInset, SidebarProvider } from '@/components/ui/sidebar'
-import { getCookie } from '@/lib/cookies'
+import { getServerCookie } from '@/lib/cookies/server'
 import { cn } from '@/lib/utils'
 
 interface Props {
   children: React.ReactNode
 }
 
-const Layout: React.FC<Props> = ({ children }: Props) => {
-  const defaultOpen = getCookie('sidebar_state') !== 'false'
+const Layout: React.FC<Props> = async ({ children }: Props) => {
+  const defaultOpen =
+    Boolean(await getServerCookie<'true' | 'false'>('sidebar_state')) ?? false
   return (
     <SearchProvider>
       <SidebarProvider defaultOpen={defaultOpen}>
