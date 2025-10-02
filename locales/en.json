@@ -1,0 +1,59 @@
+{
+  "navigation": {
+    "dashboard": "Dashboard",
+    "products": "Products",
+    "orders": "Orders",
+    "categories": "Categories",
+    "customers": "Customers",
+    "suppliers": "Suppliers",
+    "settings": "Settings"
+  },
+  "userMenu": {
+    "profile": "Profile",
+    "logout": "Logout"
+  },
+  "common": {
+    "search": "Search",
+    "add": "Add",
+    "edit": "Edit",
+    "delete": "Delete",
+    "save": "Save",
+    "cancel": "Cancel",
+    "view": "View",
+    "duplicate": "Duplicate",
+    "loading": "Loading...",
+    "noData": "No data available"
+  },
+  "dashboard": {
+    "salesToday": "Excellent! We have strong sales today 📈",
+    "totalRevenue": "Total Revenue",
+    "totalOrders": "Total Orders",
+    "totalCustomers": "Total Customers",
+    "totalProducts": "Total Products"
+  },
+  "products": {
+    "title": "Products",
+    "addProduct": "Add Product",
+    "productName": "Product Name",
+    "price": "Price",
+    "stock": "Stock",
+    "category": "Category",
+    "status": "Status"
+  },
+  "orders": {
+    "title": "Orders",
+    "orderNumber": "Order Number",
+    "customer": "Customer",
+    "date": "Date",
+    "total": "Total",
+    "status": "Status"
+  },
+  "customers": {
+    "title": "Customers",
+    "addCustomer": "Add Customer",
+    "customerName": "Customer Name",
+    "email": "Email",
+    "phone": "Phone",
+    "totalOrders": "Total Orders"
+  }
+}
