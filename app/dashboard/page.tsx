@@ -25,7 +25,10 @@ export default function Dashboard() {
         <TopNav links={topNav} />
         <div className="ms-auto flex items-center space-x-4">
           <Search />
-          <LanguageSwitch />
+          {/*
+           TODO:fix the direction on sidebar and nav bar  
+          <LanguageSwitch /> 
+          */}
           <ThemeSwitch />
           <ProfileDropdown />
         </div>
