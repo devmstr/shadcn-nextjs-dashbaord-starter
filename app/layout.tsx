@@ -7,7 +7,6 @@ import { ThemeProvider } from '@/components/providers/theme-provider'
 import { ReactQueryProvider } from '@/components/providers/react-query.provider'
 import { DirectionProvider } from '@/components/providers/direction-provider'
 import '@/styles/globals.css'
-import { I18NProvider } from 'next/dist/server/lib/i18n-provider'
 import { I18nProvider } from '@/components/providers/i18n.provider'
 
 const geistSans = Geist({

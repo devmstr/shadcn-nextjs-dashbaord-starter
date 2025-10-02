@@ -1,47 +1,32 @@
 'use client'
 
-import React, { createContext, useContext, useState, ReactNode } from 'react'
+import i18n from 'i18next'
+import { initReactI18next } from 'react-i18next'
+import LanguageDetector from 'i18next-browser-languagedetector'
+// import locales
 import en from '@/locales/en.json'
 import ar from '@/locales/ar.json'
 
-export type Language = 'en' | 'ar'
-
-interface I18nContextProps {
-  t: (key: string) => string
-  language: Language
-  isRTL: boolean
-  changeLanguage: (lang: Language) => void
-}
-
-const dictionaries = { en, ar }
-
-const I18nContext = createContext<I18nContextProps | null>(null)
-
-export function I18nProvider({ children }: { children: ReactNode }) {
-  const [language, setLanguage] = useState<Language>('en')
-
-  const t = (key: string): string => {
-    const keys = key.split('.')
-    let result: any = dictionaries[language]
-    for (const k of keys) {
-      result = result?.[k]
+i18n
+  .use(LanguageDetector) // auto-detect browser language
+  .use(initReactI18next) // hooks up with react
+  .init({
+    resources: {
+      en: { translation: en },
+      ar: { translation: ar }
+    },
+    fallbackLng: 'en',
+    interpolation: {
+      escapeValue: false // react already escapes
+    },
+    detection: {
+      order: ['cookie', 'localStorage', 'navigator'],
+      caches: ['cookie', 'localStorage']
     }
-    return result ?? key // fallback to raw key
-  }
+  })
 
-  const changeLanguage = (lang: Language) => setLanguage(lang)
+import { I18nextProvider } from 'react-i18next'
 
-  return (
-    <I18nContext.Provider
-      value={{ t, language, isRTL: language === 'ar', changeLanguage }}
-    >
-      {children}
-    </I18nContext.Provider>
-  )
-}
-
-export function useTranslation() {
-  const ctx = useContext(I18nContext)
-  if (!ctx) throw new Error('useTranslation must be used within I18nProvider')
-  return ctx
+export function I18nProvider({ children }: { children: React.ReactNode }) {
+  return <I18nextProvider i18n={i18n}>{children}</I18nextProvider>
 }
