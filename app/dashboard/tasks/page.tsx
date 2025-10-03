@@ -13,14 +13,7 @@ export const metadata: Metadata = {
   description: 'A task and issue tracker build using Tanstack Table.'
 }
 
-export async function getTasks() {
-  const tasks = await import('./data/tasks.json')
-  return tasks.default as Task[]
-}
-
 export default async function TaskPage() {
-  const tasks = await getTasks()
-
   return (
     <>
       <div className="md:hidden">
@@ -40,7 +33,7 @@ export default async function TaskPage() {
         />
       </div>
       <div className="hidden h-full flex-1 flex-col gap-8 p-8 md:flex">
-        <DataTable data={tasks} columns={columns} />
+        <DataTable columns={columns} />
       </div>
     </>
   )

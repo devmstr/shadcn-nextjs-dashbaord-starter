@@ -27,50 +27,25 @@ import {
 
 import { DataTablePagination } from './data-table-pagination'
 import { DataTableToolbar } from './data-table-toolbar'
+import { useServerPaginatedTable } from '@/hooks/use-server-paginated-table'
+import { LoaderCircle } from 'lucide-react'
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[]
-  data: TData[]
 }
 
 export function DataTable<TData, TValue>({
-  columns,
-  data
+  columns
 }: DataTableProps<TData, TValue>) {
-  const [rowSelection, setRowSelection] = React.useState({})
-  const [columnVisibility, setColumnVisibility] =
-    React.useState<VisibilityState>({})
-  const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
-    []
-  )
-
-  const [sorting, setSorting] = React.useState<SortingState>([])
-
-  const table = useReactTable({
-    data,
+  const { table, isLoading, error, rowCount } = useServerPaginatedTable<TData>({
     columns,
-    state: {
-      sorting,
-      columnVisibility,
-      rowSelection,
-      columnFilters
-    },
-    initialState: {
-      pagination: {
-        pageSize: 25
-      }
-    },
-    enableRowSelection: true,
-    onRowSelectionChange: setRowSelection,
-    onSortingChange: setSorting,
-    onColumnFiltersChange: setColumnFilters,
-    onColumnVisibilityChange: setColumnVisibility,
-    getCoreRowModel: getCoreRowModel(),
-    getFilteredRowModel: getFilteredRowModel(),
-    getPaginationRowModel: getPaginationRowModel(),
-    getSortedRowModel: getSortedRowModel(),
-    getFacetedRowModel: getFacetedRowModel(),
-    getFacetedUniqueValues: getFacetedUniqueValues()
+    fetchUrl: '/api/tasks',
+    defaultPageSize: 10,
+    filterableColumns: [
+      { id: 'status', type: 'multi-select' },
+      { id: 'priority', type: 'multi-select' },
+      { id: 'title', type: 'search', paramName: 'search' }
+    ]
   })
 
   return (
@@ -117,9 +92,15 @@ export function DataTable<TData, TValue>({
               <TableRow>
                 <TableCell
                   colSpan={columns.length}
-                  className="h-24 text-center"
+                  className="h-24 text-center flex justify-center items-center"
                 >
-                  No results.
+                  {error && <span>Error! occured 404</span>}
+
+                  {isLoading && (
+                    <LoaderCircle className="text-muted-foreground w-5 h-5 animate-spin" />
+                  )}
+
+                  {!isLoading && !error && <span>No results.</span>}
                 </TableCell>
               </TableRow>
             )}
