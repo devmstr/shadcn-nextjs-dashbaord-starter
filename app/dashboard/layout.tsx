@@ -10,6 +10,7 @@ import { ProfileDropdown } from '@/components/profile-dropdown'
 import { Search } from '@/components/search'
 import { ThemeSwitch } from '@/components/theme-switch'
 import { LanguageSwitch } from '@/components/lanuage-switch'
+import { DynamicBreadcrumb } from '@/components/breadcrumb'
 
 interface Props {
   children: React.ReactNode
@@ -64,12 +65,13 @@ const Layout: React.FC<Props> = async ({ children }: Props) => {
           )}
         >
           {/* ===== Top Heading ===== */}
-          <Header className="">
-            <TopNav links={topNav} className="flex w-full" />
+          <Header className="w-full flex">
+            {/* <TopNav links={topNav} className="flex w-full" /> */}
+            <DynamicBreadcrumb className="w-full" />
             <div className="flex w-fit items-center gap-4">
               <Search />
               {/* TODO:fix the direction on sidebar and nav bar  */}
-              <LanguageSwitch />
+              {/* <LanguageSwitch /> */}
               <ThemeSwitch />
               <ProfileDropdown />
             </div>

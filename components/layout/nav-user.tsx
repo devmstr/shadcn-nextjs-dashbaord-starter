@@ -26,6 +26,7 @@ import {
   useSidebar
 } from '@/components/ui/sidebar'
 import { SignOutDialog } from '@/components/sign-out-dialog'
+import { useRouter } from 'next/navigation'
 
 type NavUserProps = {
   user: {
@@ -38,6 +39,7 @@ type NavUserProps = {
 export function NavUser({ user }: NavUserProps) {
   const { isMobile } = useSidebar()
   const [open, setOpen] = useDialogState()
+  const { push: navigate } = useRouter()
 
   return (
     <>
@@ -107,7 +109,11 @@ export function NavUser({ user }: NavUserProps) {
                 </DropdownMenuItem>
               </DropdownMenuGroup>
               <DropdownMenuSeparator />
-              <DropdownMenuItem onClick={() => setOpen(true)}>
+              <DropdownMenuItem
+                onClick={() => {
+                  setOpen(true)
+                }}
+              >
                 <LogOut />
                 Sign out
               </DropdownMenuItem>

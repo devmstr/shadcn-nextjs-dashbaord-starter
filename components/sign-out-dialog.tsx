@@ -28,7 +28,7 @@ export function SignOutDialog({ open, onOpenChange }: SignOutDialogProps) {
 
     // Preserve current path for redirect after sign-in
     const currentPath = pathname
-    const redirectUrl = `/sign-in?redirect=${encodeURIComponent(currentPath)}`
+    const redirectUrl = `/?redirect=${encodeURIComponent(currentPath)}`
 
     router.replace(redirectUrl)
   }

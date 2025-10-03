@@ -14,6 +14,7 @@ import {
   DropdownMenuTrigger
 } from '@/components/ui/dropdown-menu'
 import { SignOutDialog } from '@/components/sign-out-dialog'
+import { sidebarData } from './layout/data/sidebar-data'
 
 export function ProfileDropdown() {
   const [open, setOpen] = useDialogState()
@@ -24,7 +25,7 @@ export function ProfileDropdown() {
         <DropdownMenuTrigger asChild>
           <Button variant="ghost" className="relative h-8 w-8 rounded-full">
             <Avatar className="h-8 w-8">
-              <AvatarImage src="/avatars/01.png" alt="@shadcn" />
+              <AvatarImage src={sidebarData.user.avatar} alt="@shadcn" />
               <AvatarFallback>SN</AvatarFallback>
             </Avatar>
           </Button>

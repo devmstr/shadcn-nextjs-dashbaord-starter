@@ -5,10 +5,11 @@ export const sidebarData: SidebarData = {
   user: {
     name: 'satnaing',
     email: 'satnaingdev@gmail.com',
-    avatar: '/avatars/shadcn.jpg'
+    avatar:
+      'https://lh3.googleusercontent.com/a/ACg8ocIcoMnbpu9TLBQc4uWFYTRUfgPrSaXQwHkvjVgRFUJkx9KSMMQS=s83-c-mo'
   },
   teams: [
-    { name: 'Shadcn Admin', logo: 'Command', plan: 'Vite + ShadcnUI' },
+    { name: 'Shadcn Admin', logo: 'Building', plan: 'Vite + ShadcnUI' },
     { name: 'Acme Inc', logo: 'GalleryVerticalEnd', plan: 'Enterprise' },
     { name: 'Acme Corp.', logo: 'AudioWaveform', plan: 'Startup' }
   ],
@@ -17,58 +18,7 @@ export const sidebarData: SidebarData = {
       title: 'General',
       items: [
         { title: 'Dashboard', url: '/dashboard', icon: 'LayoutDashboard' },
-        { title: 'Tasks', url: '/dashboard/tasks', icon: 'ListTodo' },
-        { title: 'Apps', url: '/apps', icon: 'Package' },
-        { title: 'Chats', url: '/chats', badge: '3', icon: 'MessagesSquare' },
-        { title: 'Users', url: '/users', icon: 'Users' },
-        {
-          title: 'Secured by Clerk',
-          icon: 'LockIcon',
-          items: [
-            { title: 'Sign In', url: '/clerk/sign-in' },
-            { title: 'Sign Up', url: '/clerk/sign-up' },
-            { title: 'User Management', url: '/clerk/user-management' }
-          ]
-        }
-      ]
-    },
-    {
-      title: 'Pages',
-      items: [
-        {
-          title: 'Auth',
-          icon: 'ShieldCheck',
-          items: [
-            { title: 'Sign In', url: '/sign-in' },
-            { title: 'Sign In (2 Col)', url: '/sign-in-2' },
-            { title: 'Sign Up', url: '/sign-up' },
-            { title: 'Forgot Password', url: '/forgot-password' },
-            { title: 'OTP', url: '/otp' }
-          ]
-        },
-        {
-          title: 'Errors',
-          icon: 'Bug',
-          items: [
-            {
-              title: 'Unauthorized',
-              url: '/errors/unauthorized',
-              icon: 'Lock'
-            },
-            { title: 'Forbidden', url: '/errors/forbidden', icon: 'UserX' },
-            { title: 'Not Found', url: '/errors/not-found', icon: 'FileX' },
-            {
-              title: 'Internal Server Error',
-              url: '/errors/internal-server-error',
-              icon: 'ServerOff'
-            },
-            {
-              title: 'Maintenance Error',
-              url: '/errors/maintenance-error',
-              icon: 'Construction'
-            }
-          ]
-        }
+        { title: 'Products', url: '/dashboard/products', icon: 'Package' }
       ]
     },
     {
@@ -78,22 +28,30 @@ export const sidebarData: SidebarData = {
           title: 'Settings',
           icon: 'Settings',
           items: [
-            { title: 'Profile', url: '/settings', icon: 'UserCog' },
-            { title: 'Account', url: '/settings/account', icon: 'Wrench' },
+            { title: 'Profile', url: '/dashboard/settings', icon: 'UserCog' },
+            {
+              title: 'Account',
+              url: '/dashboard/settings/account',
+              icon: 'Wrench'
+            },
             {
               title: 'Appearance',
-              url: '/settings/appearance',
+              url: '/dashboard/settings/appearance',
               icon: 'Palette'
             },
             {
               title: 'Notifications',
-              url: '/settings/notifications',
+              url: '/dashboard/settings/notifications',
               icon: 'Bell'
             },
-            { title: 'Display', url: '/settings/display', icon: 'Monitor' }
+            {
+              title: 'Display',
+              url: '/dashboard/settings/display',
+              icon: 'Monitor'
+            }
           ]
         },
-        { title: 'Help Center', url: '/help-center', icon: 'HelpCircle' }
+        { title: 'Help Center', url: '/help', icon: 'Headphones' }
       ]
     }
   ]
