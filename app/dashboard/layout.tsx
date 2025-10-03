@@ -4,10 +4,43 @@ import { SearchProvider } from '@/components/providers/search-provider'
 import { SidebarInset, SidebarProvider } from '@/components/ui/sidebar'
 import { getServerCookie } from '@/lib/cookies/server'
 import { cn } from '@/lib/utils'
+import { Header } from '@/components/layout/header'
+import { TopNav } from '@/components/layout/top-nav'
+import { ProfileDropdown } from '@/components/profile-dropdown'
+import { Search } from '@/components/search'
+import { ThemeSwitch } from '@/components/theme-switch'
+import { LanguageSwitch } from '@/components/lanuage-switch'
 
 interface Props {
   children: React.ReactNode
 }
+
+const topNav = [
+  {
+    title: 'Overview',
+    href: 'dashboard/overview',
+    isActive: true,
+    disabled: false
+  },
+  {
+    title: 'Customers',
+    href: 'dashboard/customers',
+    isActive: false,
+    disabled: true
+  },
+  {
+    title: 'Products',
+    href: 'dashboard/products',
+    isActive: false,
+    disabled: true
+  },
+  {
+    title: 'Settings',
+    href: 'dashboard/settings',
+    isActive: false,
+    disabled: true
+  }
+]
 
 const Layout: React.FC<Props> = async ({ children }: Props) => {
   const defaultOpen =
@@ -30,6 +63,17 @@ const Layout: React.FC<Props> = async ({ children }: Props) => {
             'peer-data-[variant=inset]:has-[[data-layout=fixed]]:h-[calc(100svh-(var(--spacing)*4))]'
           )}
         >
+          {/* ===== Top Heading ===== */}
+          <Header className="">
+            <TopNav links={topNav} className="flex w-full" />
+            <div className="flex w-fit items-center gap-4">
+              <Search />
+              {/* TODO:fix the direction on sidebar and nav bar  */}
+              <LanguageSwitch />
+              <ThemeSwitch />
+              <ProfileDropdown />
+            </div>
+          </Header>
           {children}
         </SidebarInset>
       </SidebarProvider>

@@ -3,6 +3,12 @@ import * as LucideIcons from 'lucide-react'
 
 type LucideIcon = keyof typeof LucideIcons
 
+type FilterItem = {
+  label: string
+  value: string
+  icon: LucideIcon
+}
+
 type User = {
   name: string
   email: string
@@ -50,5 +56,6 @@ export type {
   NavItem,
   NavCollapsible,
   NavLink,
-  LucideIcon
+  LucideIcon,
+  FilterItem
 }
